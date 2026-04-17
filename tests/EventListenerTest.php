@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-use stdClass;
 use Tests\Fixtures\NotSluggable;
 
 it('ignores saves of models without the Sluggable attribute', function (): void {

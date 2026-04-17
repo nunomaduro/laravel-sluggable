@@ -38,7 +38,32 @@ class Post extends Model
 }
 ```
 
-That's it. After running `php artisan migrate`, when a `Post` is created, a slug will be automatically generated and stored in the `slug` column:
+It also generates a migration under `database/migrations` that adds the slug column:
+
+```php
+Schema::table('posts', function (Blueprint $table) {
+    $table
+        ->string('slug')
+    //  ->nullable()
+        ->unique()
+        ->after('id');
+});
+```
+
+**Review the migration before running it.** The generated file is a sensible default for a greenfield model, but the right shape depends on how you configured the attribute and the state of your existing data:
+
+- If you passed `unique: false`, remove the `->unique()` call.
+- If you're using `scope`, drop `->unique()` and add a **compound** unique index over the slug column + scope columns (e.g. `$table->unique(['slug', 'team_id'])`).
+- If you're adding `#[Sluggable]` to a model that already has rows, either uncomment `->nullable()` and **backfill slugs** before applying the unique constraint, or split the work into a second migration that adds the index after backfill.
+- The column is placed `->after('id')` for cosmetics; move it if your table layout differs.
+
+Once the migration is in shape, run:
+
+```bash
+php artisan migrate
+```
+
+When a `Post` is created, a slug will be automatically generated and stored in the `slug` column:
 
 ```php
 $post = Post::create(['title' => 'Hello World']);
@@ -51,29 +76,9 @@ The command also accepts `--from` and `--to` options:
 php artisan make:sluggable Post --from=headline --to=url_slug
 ```
 
-## Manual Setup
-
-If you prefer to set things up by hand, add the attribute yourself:
-
-```php
-use Illuminate\Database\Eloquent\Model;
-use NunoMaduro\LaravelSluggable\Attributes\Sluggable;
-
-#[Sluggable(from: 'title')]
-class Post extends Model
-{
-}
-```
-
-Add a `slug` column to the model's table (a unique `string` column is recommended).
-
-The package listens globally on the `eloquent.creating: *` and `eloquent.updating: *` wildcard events, looks for the `#[Sluggable]` attribute on the saved model, and runs the generator when present. Models without the attribute are ignored.
-
 ## Configuration
 
 Every aspect of slug generation can be customized directly on the attribute.
-
-> **Important**: The generated migration creates a simple, unique string column. You **may need to tweak it depending on your slug configuration** — for example, removing the `unique()` constraint if `unique: false`, or when using `scope`. The same goes when adding the `#[Sluggable]` attribute to a model with existing data — you may need to **backfill slugs** before applying a unique constraint.
 
 ### `from`
 
