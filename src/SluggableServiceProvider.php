@@ -9,6 +9,7 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\ServiceProvider;
+use NunoMaduro\LaravelSluggable\Attributes\Sluggable;
 use NunoMaduro\LaravelSluggable\Console\SluggableMakeCommand;
 
 final class SluggableServiceProvider extends ServiceProvider
@@ -50,11 +51,11 @@ final class SluggableServiceProvider extends ServiceProvider
                 return;
             }
 
-            if (SlugGenerator::resolve($model::class) === null) {
+            if (! SlugGenerator::resolve($model::class) instanceof Sluggable) {
                 return;
             }
 
-            (new SlugGenerator($model))->handleCreating();
+            new SlugGenerator($model)->handleCreating();
         });
 
         $events->listen('eloquent.updating: *', static function (string $event, array $payload): void {
@@ -64,11 +65,11 @@ final class SluggableServiceProvider extends ServiceProvider
                 return;
             }
 
-            if (SlugGenerator::resolve($model::class) === null) {
+            if (! SlugGenerator::resolve($model::class) instanceof Sluggable) {
                 return;
             }
 
-            (new SlugGenerator($model))->handleUpdating();
+            new SlugGenerator($model)->handleUpdating();
         });
     }
 }

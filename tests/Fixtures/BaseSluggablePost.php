@@ -10,7 +10,9 @@ use NunoMaduro\LaravelSluggable\Attributes\Sluggable;
 #[Sluggable(from: 'name')]
 class BaseSluggablePost extends Model
 {
+    #[\Override]
     protected $table = 'sluggable_posts';
 
+    #[\Override]
     protected $guarded = [];
 }
