@@ -56,7 +56,7 @@ Schema::table('posts', function (Blueprint $table) {
 });
 ```
 
-**Review the migration before running it.** The right shape depends on how you configured the attribute and the state of your existing data. For example, on an existing table you typically want to use the `->nullable()`, etc.
+**Review the migration before running it.** The right shape depends on how you configured the attribute and the state of your existing data. For example, on a table with existing rows you typically want to use the `->nullable()`, etc.
 
 Once the migration is in shape, run:
 
