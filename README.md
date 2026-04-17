@@ -11,8 +11,9 @@
 
 **Laravel Sluggable** is my opinionated take on **automatic slug generation for Eloquent models** — the exact pattern I've reached for across projects like **Laravel Cloud**, now packaged up. A single `#[Sluggable]` attribute on the model is all you need. No trait, no base class, no extra wiring.
 
-> **Requires [PHP 8.5+](https://php.net/releases/) and [Laravel 13.5+](https://laravel.com)**
+It handles **all of the weirdest edge cases** you can think about; slugs collisions, Unicode and CJK transliteration, domain-aware dot preservation, scoped uniqueness (per-tenant, per-locale), multi-column sources, soft-deleted record collisions, and more.
 
+> **Requires [PHP 8.5+](https://php.net/releases/) and [Laravel 13.5+](https://laravel.com)**
 
 ## Installation
 
@@ -187,5 +188,7 @@ A few examples:
 | `Hello — World`                     | `hello-world`                     |
 | `🎉 Hello 🌟 World 🚀`              | `hello-world`                     |
 | `[2024] Annual Report (Final)`      | `2024-annual-report-final`        |
+
+---
 
 **Laravel Sluggable** was created by **[Nuno Maduro](https://x.com/enunomaduro)** under the **[MIT license](https://opensource.org/licenses/MIT)**.
