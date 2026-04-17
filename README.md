@@ -1,4 +1,8 @@
 <p align="center">
+    <img src="https://raw.githubusercontent.com/nunomaduro/laravel-sluggable/1.x/docs/logo.png" alt="Laravel Sluggable code example" height="300">
+</p>
+
+<p align="center">
     <p align="center">
         <a href="https://github.com/nunomaduro/laravel-sluggable/actions"><img alt="GitHub Workflow Status (master)" src="https://github.com/nunomaduro/laravel-sluggable/actions/workflows/tests.yml/badge.svg"></a>
         <a href="https://packagist.org/packages/nunomaduro/laravel-sluggable"><img alt="Total Downloads" src="https://img.shields.io/packagist/dt/nunomaduro/laravel-sluggable"></a>
