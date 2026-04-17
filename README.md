@@ -50,12 +50,7 @@ Schema::table('posts', function (Blueprint $table) {
 });
 ```
 
-**Review the migration before running it.** The generated file is a sensible default for a greenfield model, but the right shape depends on how you configured the attribute and the state of your existing data:
-
-- If you passed `unique: false`, remove the `->unique()` call.
-- If you're using `scope`, drop `->unique()` and add a **compound** unique index over the slug column + scope columns (e.g. `$table->unique(['slug', 'team_id'])`).
-- If you're adding `#[Sluggable]` to a model that already has rows, either uncomment `->nullable()` and **backfill slugs** before applying the unique constraint, or split the work into a second migration that adds the index after backfill.
-- The column is placed `->after('id')` for cosmetics; move it if your table layout differs.
+**Review the migration before running it.** The right shape depends on how you configured the attribute and the state of your existing data. For example, on a new table you typically want to use the `->nullable()`, etc.
 
 Once the migration is in shape, run:
 
