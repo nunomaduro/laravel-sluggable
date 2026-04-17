@@ -13,6 +13,7 @@
 
 > **Requires [PHP 8.5+](https://php.net/releases/) and [Laravel 13.5+](https://laravel.com)**
 
+
 ## Installation
 
 ```bash
@@ -163,7 +164,9 @@ Because it extends `ValidationException`, the exception is not reported to the a
 
 ## Slug Generation Pipeline
 
-The slug generation pipeline transliterates Unicode characters (including CJK scripts) into their Latin equivalents, preserves dots (useful for domain-like values such as `laravel.com`), and converts special characters into clean separators.
+The pipeline has **first-class Unicode and CJK support** — non-Latin scripts transliterate to readable Latin slugs (`如何安装 Laravel` → `ru-he-an-zhuang-laravel`).
+
+It's also **domain-aware**: values like `laravel.com`, `sub.domain.example.com`, `document.final.pdf`, and `über.straße` keep their dots intact — most generators flatten them.
 
 A few examples:
 
