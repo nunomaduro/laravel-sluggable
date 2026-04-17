@@ -9,9 +9,7 @@
 
 ------
 
-**Laravel Sluggable** adds first-party-style support for **automatic slug generation on Eloquent models** via a single `#[Sluggable]` attribute — no trait, no base class, no extra wiring.
-
-Originally proposed for Laravel core in [laravel/framework#59173](https://github.com/laravel/framework/pull/59173) and shipped here as a standalone package.
+**Laravel Sluggable** is my opinionated take on **automatic slug generation for Eloquent models** — the exact pattern I've reached for across projects like **Laravel Cloud**, now packaged up. A single `#[Sluggable]` attribute on the model is all you need. No trait, no base class, no extra wiring.
 
 > **Requires [PHP 8.5+](https://php.net/releases/) and [Laravel 13.5+](https://laravel.com)**
 
