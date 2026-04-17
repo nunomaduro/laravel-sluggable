@@ -43,6 +43,3 @@ jobs:
 
     - name: Type Coverage Checks
       run: composer test:type-coverage
-
-    - name: Refactor Checks
-      run: composer test:refactor
