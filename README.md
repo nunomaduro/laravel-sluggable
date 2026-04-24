@@ -9,6 +9,7 @@
         <a href="https://packagist.org/packages/nunomaduro/laravel-sluggable"><img alt="Latest Version" src="https://img.shields.io/packagist/v/nunomaduro/laravel-sluggable"></a>
         <a href="https://packagist.org/packages/nunomaduro/laravel-sluggable"><img alt="License" src="https://img.shields.io/packagist/l/nunomaduro/laravel-sluggable"></a>
         <a href="https://youtube.com/@nunomaduro?sub_confirmation=1"><img alt="YouTube Channel Subscribers" src="https://img.shields.io/youtube/channel/subscribers/UCO_hYZF2gb_CyG5sA7ArlGg?style=flat&label=youtube&color=brightgreen"></a>
+        <a href="https://packagist.org/packages/nunomaduro/laravel-sluggable"><img alt="Laravel Compatibility" src="https://badge.laravel.cloud/badge/nunomaduro/laravel-sluggable"></a>
     </p>
 </p>
 
